@@ -1,16 +1,23 @@
 class UsersController < ApplicationController
   def index
-    # matching_directors = Director.all
-    # @list_of_directors = matching_directors.order({ :created_at => :desc })
+    matching_users = User.all
+    @list_of_users = matching_users.order({ :username => :asc })
 
     render({ :template => "user_templates/user_home.html.erb" })
   end
 
   def show
-    # the_id = params.fetch("path_id")
+    @user = params.fetch("user_id")
+    matching_users = User.where({ :username => @user })
+    @the_user = matching_users.at(0)
 
-    # matching_directors = Director.where({ :id => the_id })
-    # @the_director = matching_directors.at(0)
+    @new_user = params.fetch("input_username")
+
+    render({ :template => "user_templates/user_show.html.erb" })
+  end
+
+  def update
+    @new_user = params.fetch("input_username")
 
     render({ :template => "user_templates/user_show.html.erb" })
   end
