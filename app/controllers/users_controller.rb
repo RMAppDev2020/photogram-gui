@@ -11,14 +11,14 @@ class UsersController < ApplicationController
     matching_users = User.where({ :username => @user })
     @the_user = matching_users.at(0)
 
-    @new_user = params.fetch("input_username")
+    # @new_user = params.fetch("input_username")
 
     render({ :template => "user_templates/user_show.html.erb" })
   end
 
-  def update
-    @new_user = params.fetch("input_username")
+  # def update
+  #   @new_user = params.fetch("input_username")
 
-    render({ :template => "user_templates/user_show.html.erb" })
-  end
+  #   render({ :template => "user_templates/user_show.html.erb" })
+  # end
 end
